@@ -62,6 +62,10 @@ dependencies {
     implementation platform(libs.okhttp3)
     implementation libs.okhttp3.logging.interceptor
 
+    implementation libs.androidx.hilt.navigation.compose
+
+    implementation libs.coil
+
     testImplementation libs.junit
     androidTestImplementation libs.androidx.test.ext.junit
     androidTestImplementation libs.espresso.core

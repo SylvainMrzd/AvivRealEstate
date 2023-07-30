@@ -7,6 +7,9 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 
+/**
+ * Initialize API Service and defines requests available for this API
+ */
 interface ApiService {
 
     @GET("listings.json")
