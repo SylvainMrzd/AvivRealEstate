@@ -1,4 +1,4 @@
-package com.sylvainmrzd.avivrealestate.feature_realestate_ads.presentation
+package com.sylvainmrzd.avivrealestate.feature_realestate_ads.presentation.util
 
 import android.content.Context
 import androidx.annotation.StringRes
@@ -13,6 +13,7 @@ import androidx.compose.ui.res.stringResource
  */
 sealed class UiText {
     data class StringValue(val value: String?): UiText()
+    data class IntValue(val value: Int): UiText()
 
     class StringResource(
         @StringRes val resId: Int,
@@ -37,6 +38,7 @@ sealed class UiText {
 
                 return combinedString
             }
+            else -> null
         }
     }
 
@@ -53,6 +55,14 @@ sealed class UiText {
 
                 return combinedString
             }
+            else -> null
+        }
+    }
+
+    fun asInt(): Int? {
+        return when(this) {
+            is IntValue -> value
+            else -> null
         }
     }
 }

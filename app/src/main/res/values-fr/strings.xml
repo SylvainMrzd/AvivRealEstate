@@ -1,6 +1,5 @@
 <resources>
     <string name="ad_photo_content_description">Photo de l\'annonce</string>
-    <string name="square_meter_unit" translatable="false">%s m²</string>
     <string name="rooms">"%s pièces"</string>
     <string name="bedrooms">"%s chambres"</string>
     <string name="being_sold_by">"Vendu par %s"</string>
@@ -8,6 +7,6 @@
     <string name="image_placeholder_content_description">La photo de l\'annonce est en cours de chargement</string>
     <string name="error_image_content_description">Aucune photo disponible</string>
     <string name="retry">Réessayer</string>
-    <string name="fetching_ads_error">Erreur lors de la récupération des annonces</string>
-    <string name="ad_loading_error_image_content_description">Echec du chargement des annonces</string>
+    <string name="fetching_data_error">Erreur lors de la récupération des données</string>
+    <string name="data_loading_error_image_content_description">Echec du chargement des données</string>
 </resources>

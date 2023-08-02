@@ -6,8 +6,8 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.google.gson.Gson
 import com.sylvainmrzd.avivrealestate.feature_realestate_ads.domain.model.Ad
 import com.sylvainmrzd.avivrealestate.feature_realestate_ads.domain.model.Items
-import com.sylvainmrzd.avivrealestate.feature_realestate_ads.presentation.AdElements
-import com.sylvainmrzd.avivrealestate.feature_realestate_ads.presentation.UiText
+import com.sylvainmrzd.avivrealestate.feature_realestate_ads.presentation.util.AdElements
+import com.sylvainmrzd.avivrealestate.feature_realestate_ads.presentation.util.UiText
 import com.sylvainmrzd.avivrealestate.feature_realestate_ads.presentation.formatArea
 import com.sylvainmrzd.avivrealestate.feature_realestate_ads.presentation.formatBedrooms
 import com.sylvainmrzd.avivrealestate.feature_realestate_ads.presentation.formatPrice

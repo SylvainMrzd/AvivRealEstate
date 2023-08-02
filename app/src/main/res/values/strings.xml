@@ -6,9 +6,10 @@
     <string name="bedrooms">"%s bedrooms"</string>
     <string name="being_sold_by">"Being sold by %s"</string>
     <string name="price">%s €</string>
+    <string name="square_meter_price" translatable="false">%s €/m²</string>
     <string name="image_placeholder_content_description">Ad photo is loading</string>
     <string name="error_image_content_description">No photo available</string>
     <string name="retry">Retry</string>
-    <string name="fetching_ads_error">Something wrong happened while fetching the ads</string>
-    <string name="ad_loading_error_image_content_description">Failed to load ads</string>
+    <string name="fetching_data_error">Something wrong happened while fetching data</string>
+    <string name="data_loading_error_image_content_description">Failed to load data</string>
 </resources>
