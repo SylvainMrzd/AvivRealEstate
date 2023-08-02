@@ -9,7 +9,9 @@ import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import com.sylvainmrzd.avivrealestate.feature_realestate_ads.presentation.realestate_ads_list.view.AdsListScreen
 import com.sylvainmrzd.avivrealestate.ui.theme.AvivRealEstateTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

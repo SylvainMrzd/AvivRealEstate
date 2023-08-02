@@ -24,6 +24,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -31,19 +32,25 @@ import coil.compose.SubcomposeAsyncImage
 import com.sylvainmrzd.avivrealestate.R
 import com.sylvainmrzd.avivrealestate.feature_realestate_ads.presentation.AdElements
 import com.sylvainmrzd.avivrealestate.feature_realestate_ads.presentation.UiText
+import com.sylvainmrzd.avivrealestate.others.Constants
 
 /**
  * Builds the Item that displays ad info from [infoToDisplay]
  * Ad Item is dynamically build to be used in a list
  */
 @Composable
-fun AdItem(infoToDisplay: Map<AdElements, UiText>, index: Int, onClick: (Int) -> Unit) {
+fun AdItem(
+    infoToDisplay: Map<AdElements, UiText>,
+    index: Int,
+    onClick: (Int) -> Unit
+) {
 
     ElevatedCard(
         modifier = Modifier
             .padding(4.dp)
             .fillMaxWidth()
-            .clickable { onClick(index) },
+            .clickable { onClick(index) }
+            .testTag(Constants.ADS_ITEM_TAG.plus(index)),
         shape = RoundedCornerShape(8.dp)
     ) {
         Surface {

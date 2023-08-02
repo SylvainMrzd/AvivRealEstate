@@ -3,7 +3,7 @@
     <string name="square_meter_unit" translatable="false">%s m²</string>
     <string name="rooms">"%s pièces"</string>
     <string name="bedrooms">"%s chambres"</string>
-    <string name="selling_by">"Vendu par %s"</string>
+    <string name="being_sold_by">"Vendu par %s"</string>
     <string name="price">%s €</string>
     <string name="image_placeholder_content_description">La photo de l\'annonce est en cours de chargement</string>
     <string name="error_image_content_description">Aucune photo disponible</string>

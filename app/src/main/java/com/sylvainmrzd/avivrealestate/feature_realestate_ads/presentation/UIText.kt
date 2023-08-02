@@ -1,5 +1,6 @@
 package com.sylvainmrzd.avivrealestate.feature_realestate_ads.presentation
 
+import android.content.Context
 import androidx.annotation.StringRes
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
@@ -11,7 +12,7 @@ import androidx.compose.ui.res.stringResource
  * [CombinedStrings] returns a concatenated String built from multiple [String] and/or [StringResource]
  */
 sealed class UiText {
-    data class String(val value: kotlin.String?): UiText()
+    data class StringValue(val value: String?): UiText()
 
     class StringResource(
         @StringRes val resId: Int,
@@ -23,15 +24,31 @@ sealed class UiText {
     ): UiText()
 
     @Composable
-    fun asString(): kotlin.String? {
+    fun asString(): String? {
         return when(this) {
-            is String -> value
+            is StringValue -> value
             is StringResource -> stringResource(resId, *args)
             is CombinedStrings -> {
                 var combinedString = ""
 
                 for (res in resList) {
                     combinedString += res.asString()
+                }
+
+                return combinedString
+            }
+        }
+    }
+
+    fun asStringWith(context: Context): String? {
+        return when(this) {
+            is StringValue -> value
+            is StringResource -> context.getString(resId)
+            is CombinedStrings -> {
+                var combinedString = ""
+
+                for (res in resList) {
+                    combinedString += res.asStringWith(context)
                 }
 
                 return combinedString

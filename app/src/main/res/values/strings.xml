@@ -4,7 +4,7 @@
     <string name="square_meter_unit" translatable="false">%s m²</string>
     <string name="rooms">"%s rooms"</string>
     <string name="bedrooms">"%s bedrooms"</string>
-    <string name="selling_by">"Being sold by %s"</string>
+    <string name="being_sold_by">"Being sold by %s"</string>
     <string name="price">%s €</string>
     <string name="image_placeholder_content_description">Ad photo is loading</string>
     <string name="error_image_content_description">No photo available</string>

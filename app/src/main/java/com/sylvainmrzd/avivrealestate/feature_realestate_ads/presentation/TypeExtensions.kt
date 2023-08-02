@@ -49,7 +49,7 @@ fun Int.formatBedrooms(): UiText.StringResource {
  */
 fun String.formatProfessional(): UiText.StringResource {
     return UiText.StringResource(
-        R.string.selling_by,
+        R.string.being_sold_by,
         this
     )
 }

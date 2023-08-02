@@ -15,6 +15,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -25,6 +26,7 @@ import com.sylvainmrzd.avivrealestate.R
 import com.sylvainmrzd.avivrealestate.feature_realestate_ads.presentation.components.AdItem
 import com.sylvainmrzd.avivrealestate.feature_realestate_ads.presentation.components.ShimmerAdItem
 import com.sylvainmrzd.avivrealestate.feature_realestate_ads.presentation.realestate_ads_list.viewmodel.AdsListViewModel
+import com.sylvainmrzd.avivrealestate.others.Constants
 import com.sylvainmrzd.avivrealestate.ui.theme.AvivRealEstateTheme
 
 /**
@@ -36,7 +38,7 @@ fun AdsListScreen(
     viewModel: AdsListViewModel = hiltViewModel()
 ) {
 
-    viewModel.getAdsList()
+    viewModel.fetchAdsList()
 
     Surface(
         modifier = Modifier.fillMaxSize(),
@@ -46,7 +48,11 @@ fun AdsListScreen(
          * While the fetch of the ads is in progress, displays 5 shimmer items
          * Then displays the AdItems list with the fetched data
          */
-        LazyColumn(modifier = Modifier.fillMaxSize()) {
+        LazyColumn(
+            modifier = Modifier
+                .fillMaxSize()
+                .testTag(Constants.ADS_LIST_TAG)
+        ) {
             when {
                 viewModel.isAdsFetchingInProgress -> {
                     items(5) {
@@ -55,7 +61,10 @@ fun AdsListScreen(
                 }
                 else -> {
                     itemsIndexed(items = viewModel.adsInfoList) { index, item ->
-                        AdItem(infoToDisplay = item, index) {
+                        AdItem(
+                            infoToDisplay = item,
+                            index
+                        ) {
                             // TODO Navigation to open ad details
                         }
                     }
@@ -63,8 +72,8 @@ fun AdsListScreen(
             }
         }
         when {
-            viewModel.errorMessage.isNotEmpty() -> {
-                AdsLoadFailedMessage() { viewModel.getAdsList() }
+            !viewModel.errorMessage.isNullOrEmpty() -> {
+                AdsLoadFailedMessage() { viewModel.fetchAdsList() }
             }
         }
     }
