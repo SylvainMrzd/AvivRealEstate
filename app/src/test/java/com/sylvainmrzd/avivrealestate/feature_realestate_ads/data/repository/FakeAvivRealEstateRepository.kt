@@ -1,7 +1,8 @@
 package com.sylvainmrzd.avivrealestate.feature_realestate_ads.data.repository
 
-import com.sylvainmrzd.avivrealestate.feature_realestate_ads.data.data_source.MockAvivApi
+import com.sylvainmrzd.avivrealestate.feature_realestate_ads.data.data_source.AvivApi
 import com.sylvainmrzd.avivrealestate.feature_realestate_ads.data.data_source.MockInterceptor
+import com.sylvainmrzd.avivrealestate.feature_realestate_ads.domain.model.Ad
 import com.sylvainmrzd.avivrealestate.feature_realestate_ads.domain.model.Items
 import com.sylvainmrzd.avivrealestate.others.Constants
 import com.sylvainmrzd.avivrealestate.others.Resource
@@ -50,13 +51,39 @@ class FakeAvivRealEstateRepository : AvivRealEstateRepository {
         }
     }
 
-    private fun getMockAvivApi(): MockAvivApi {
+    override suspend fun loadAdDetail(id: Int): Resource<Ad> {
+        return when {
+            shouldMockRequest -> {
+                try {
+                    val response = getMockAvivApi().getAdDetail(id)
+                    if(response.isSuccessful) {
+                        response.body()?.let {
+                            return@let Resource.success(it)
+                        } ?: Resource.error(Constants.UNKNOWN_ERROR, null)
+                    } else {
+                        Resource.error(Constants.UNKNOWN_ERROR, null)
+                    }
+                } catch (e: Exception) {
+                    Resource.error(Constants.CANNOT_REACH_SERVER_ERROR, null)
+                }
+            }
+            else -> {
+                if (shouldReturnNetworkError) {
+                    Resource.error(Constants.CANNOT_REACH_SERVER_ERROR, null)
+                } else {
+                    Resource.success(null)
+                }
+            }
+        }
+    }
+
+    private fun getMockAvivApi(): AvivApi {
         val client = OkHttpClient.Builder().addInterceptor(MockInterceptor()).build()
 
         return Retrofit.Builder()
             .baseUrl(Constants.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
-            .build().create(MockAvivApi::class.java)
+            .build().create(AvivApi::class.java)
     }
 }

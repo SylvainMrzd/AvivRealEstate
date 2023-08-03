@@ -6,13 +6,18 @@ import okhttp3.Protocol
 import okhttp3.Response
 import okhttp3.ResponseBody.Companion.toResponseBody
 
+/**
+ * Used to mocked api responses for tests
+ */
 class MockInterceptor : Interceptor {
     private val mockAdsList = this.javaClass.classLoader?.getResource("listings.json")?.readText() ?: ""
+    private val mockAdDetail = this.javaClass.classLoader?.getResource("ad_detail.json")?.readText() ?: ""
 
     override fun intercept(chain: Interceptor.Chain): Response {
         val uri = chain.request().url.toUri().toString()
         val responseString = when {
             uri.endsWith("listings.json") -> mockAdsList
+            uri.contains("listings/") -> mockAdDetail
             else -> ""
         }
 
