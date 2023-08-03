@@ -64,6 +64,7 @@ class AdTest {
             )
         expectedMap[AdElements.CITY] = UiText.StringValue("London")
         expectedMap[AdElements.PROFESSIONAL] = "SeLoger".formatProfessional()
+        expectedMap[AdElements.ID] = UiText.IntValue(999)
 
 
         val ad = Ad(
@@ -104,6 +105,19 @@ class AdTest {
         assertEquals(
             expectedMap[AdElements.PROFESSIONAL]?.asStringWith(mockContext),
             testedMap[AdElements.PROFESSIONAL]?.asStringWith(mockContext)
+        )
+        assertEquals(
+            expectedMap[AdElements.ID]?.asInt(),
+            testedMap[AdElements.ID]?.asInt()
+        )
+
+        assertEquals(
+            null,
+            testedMap[AdElements.ID]?.asStringWith(mockContext)
+        )
+        assertEquals(
+            null,
+            testedMap[AdElements.PROFESSIONAL]?.asInt()
         )
     }
 }
