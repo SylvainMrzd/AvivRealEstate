@@ -2,7 +2,6 @@ package com.sylvainmrzd.avivrealestate.feature_realestate_ads.presentation.reale
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.compose.ui.test.assertIsDisplayed
-import androidx.compose.ui.test.junit4.ComposeContentTestRule
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.performClick
@@ -13,14 +12,13 @@ import androidx.compose.ui.test.swipeUp
 import com.sylvainmrzd.avivrealestate.di.AppModule
 import com.sylvainmrzd.avivrealestate.feature_realestate_ads.presentation.MainActivity
 import com.sylvainmrzd.avivrealestate.others.Constants
+import com.sylvainmrzd.avivrealestate.waitUntilTimeout
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import dagger.hilt.android.testing.UninstallModules
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import java.util.Timer
-import kotlin.concurrent.schedule
 
 @HiltAndroidTest
 @UninstallModules(AppModule::class)
@@ -78,26 +76,6 @@ class AdsListScreenTest {
         for (i in 0..7) {
             composeRule.onNodeWithTag(Constants.ADS_LIST_TAG).performScrollToIndex(i)
             composeRule.onNodeWithTag(Constants.ADS_ITEM_TAG.plus(i)).performClick()
-        }
-    }
-
-    fun ComposeContentTestRule.waitUntilTimeout(
-    timeoutMillis: Long
-    ) {
-        AsyncTimer.start(timeoutMillis)
-        this.waitUntil(
-            condition = { AsyncTimer.expired },
-            timeoutMillis = timeoutMillis + 1000
-        )
-    }
-
-    object AsyncTimer {
-        var expired = false
-        fun start(delay: Long = 1000) {
-            expired = false
-            Timer().schedule(delay) {
-                expired = true
-            }
         }
     }
 }

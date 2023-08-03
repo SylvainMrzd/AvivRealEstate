@@ -23,6 +23,7 @@ navigation-compose = "2.6.0"
 retrofit = "2.9.0"
 okhttp3 = "4.10.0"
 runner = "1.5.2"
+uiautomator = "2.2.0"
 
 [libraries]
 androidx-core = { module = "androidx.test:core", version.ref = "core" }
@@ -30,6 +31,7 @@ androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-com
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigation-compose" }
 androidx-rules = { module = "androidx.test:rules", version.ref = "core" }
 androidx-runner = { module = "androidx.test:runner", version.ref = "runner" }
+androidx-uiautomator = { module = "androidx.test.uiautomator:uiautomator", version.ref = "uiautomator" }
 coil = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }

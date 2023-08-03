@@ -81,7 +81,9 @@ fun AdsListScreen(
         }
         when {
             !viewModel.errorMessage.isNullOrEmpty() -> {
-                DataLoadFailedMessage() { viewModel.fetchAdsList() }
+                DataLoadFailedMessage(modifier = Modifier.padding(innerPadding)) {
+                    viewModel.fetchAdsList()
+                }
             }
         }
     }

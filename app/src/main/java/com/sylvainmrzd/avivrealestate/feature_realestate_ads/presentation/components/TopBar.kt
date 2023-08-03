@@ -9,8 +9,11 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import com.sylvainmrzd.avivrealestate.R
+import com.sylvainmrzd.avivrealestate.others.Constants
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -21,12 +24,16 @@ fun TopBar(
     onBackButtonClick: () -> Unit = {}
 ) {
     TopAppBar(
+        modifier = Modifier.testTag(Constants.TOP_BAR_TAG),
         title = {
             Text(text = title)
         },
         navigationIcon = {
             if (hasBackButton) {
-                IconButton(onClick = onBackButtonClick) {
+                IconButton(
+                    modifier = Modifier.testTag(Constants.BACK_BUTTON_TAG),
+                    onClick = onBackButtonClick
+                ) {
                     Icon(Icons.Filled.ArrowBack, "backIcon")
                 }
             }

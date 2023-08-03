@@ -12,6 +12,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
@@ -19,6 +20,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
 import coil.compose.SubcomposeAsyncImage
@@ -27,14 +29,15 @@ import com.sylvainmrzd.avivrealestate.feature_realestate_ads.presentation.util.A
 import com.sylvainmrzd.avivrealestate.feature_realestate_ads.presentation.util.DisplayedScreen
 import com.sylvainmrzd.avivrealestate.feature_realestate_ads.presentation.util.UiText
 import com.sylvainmrzd.avivrealestate.feature_realestate_ads.presentation.util.Screen
+import com.sylvainmrzd.avivrealestate.others.Constants
 
 /**
  * Builds the Item that displays ad info from [infoToDisplay]
  * Ad Item is dynamically build to be used in a list
  */
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AdDetail(
+    modifier: Modifier,
     navController: NavController,
     infoToDisplay: Map<AdElements, UiText>?
 ) {
@@ -48,25 +51,15 @@ fun AdDetail(
         AdElements.PROFESSIONAL
     )
 
-    val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
-    Scaffold(
-        modifier = Modifier
-            .fillMaxSize()
-            .nestedScroll(scrollBehavior.nestedScrollConnection),
-        topBar = {
-            TopBar(
-                hasBackButton = true,
-                scrollBehavior = scrollBehavior
-            ) {
-                navController.navigateUp()
-            }
-        }
+    Surface(
+        modifier = modifier
+            .fillMaxSize(),
     ) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(it)
                 .verticalScroll(state = rememberScrollState())
+                .testTag(Constants.AD_DETAIL_CONTENT_TAG)
         ) {
             infoToDisplay?.let { infoToDisplay ->
                 for (key in orderedInfoToDisplay) {
@@ -81,7 +74,8 @@ fun AdDetail(
                                         navController.navigate(
                                             Screen.AdOpenedPhoto.route + "?photoUrl=${url}"
                                         )
-                                    },
+                                    }
+                                    .testTag(Constants.AD_DETAIL_PHOTO_TAG),
                                 contentScale = ContentScale.Crop,
                                 model = infoToDisplay[key]?.asString(),
                                 loading = { ImagePlaceholder() },

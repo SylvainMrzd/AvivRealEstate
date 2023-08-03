@@ -22,9 +22,12 @@ import com.sylvainmrzd.avivrealestate.R
  * Message and retry button displayed when an error occurred while loading data from the server
  */
 @Composable
-fun DataLoadFailedMessage(onClick: () -> Unit) {
+fun DataLoadFailedMessage(
+    modifier: Modifier,
+    onClick: () -> Unit
+) {
     Column(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
             .padding(12.dp),
         verticalArrangement = Arrangement.Center,

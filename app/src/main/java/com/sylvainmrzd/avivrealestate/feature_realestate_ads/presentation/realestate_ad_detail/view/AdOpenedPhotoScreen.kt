@@ -24,6 +24,7 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
@@ -32,6 +33,7 @@ import coil.compose.SubcomposeAsyncImage
 import com.sylvainmrzd.avivrealestate.R
 import com.sylvainmrzd.avivrealestate.feature_realestate_ads.presentation.components.ErrorImage
 import com.sylvainmrzd.avivrealestate.feature_realestate_ads.presentation.components.ImagePlaceholder
+import com.sylvainmrzd.avivrealestate.others.Constants
 import kotlin.math.PI
 import kotlin.math.cos
 import kotlin.math.roundToInt
@@ -65,6 +67,7 @@ fun AdOpenedPhotoScreen(
                     else 3f
                 }
             )
+            .testTag(Constants.AD_DETAIL_FULLSCREEN_PHOTO_TAG)
     ) {
         SubcomposeAsyncImage(
             contentScale = ContentScale.Fit,
@@ -106,6 +109,7 @@ fun AdOpenedPhotoScreen(
             contentDescription = stringResource(R.string.ad_photo_content_description)
         )
         IconButton(
+            modifier = Modifier.testTag(Constants.AD_DETAIL_FULLSCREEN_PHOTO_CLOSE_BUTTON_TAG),
             onClick = { navController.navigateUp() }
         ) {
             Icon(
