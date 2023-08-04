@@ -2,14 +2,17 @@ package com.sylvainmrzd.avivrealestate.feature_realestate_ads.presentation.reale
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.google.gson.Gson
+import com.sylvainmrzd.avivrealestate.R
 import com.sylvainmrzd.avivrealestate.feature_realestate_ads.data.repository.FakeAvivRealEstateRepository
 import com.sylvainmrzd.avivrealestate.feature_realestate_ads.domain.model.Items
+import com.sylvainmrzd.avivrealestate.feature_realestate_ads.presentation.util.PropertyTypes
 import com.sylvainmrzd.avivrealestate.getOrAwaitValueTest
 import com.sylvainmrzd.avivrealestate.others.Status
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.setMain
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNotEquals
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -59,5 +62,44 @@ class AdsListViewModelTest {
         val actualResponse = viewModel.ads.getOrAwaitValueTest().peekContent().data
 
         assertEquals(response.toString(), actualResponse.toString())
+    }
+
+    @Test
+    fun `don't have back button`(){
+        viewModel = AdsListViewModel(repository)
+
+        assertNotEquals(true, viewModel.hasBackButton)
+    }
+
+    @Test
+    fun `propertyTypeFilterSelectedOption is empty by default`(){
+        viewModel = AdsListViewModel(repository)
+
+        assertEquals("", viewModel.propertyTypeFilterSelectedOption)
+    }
+
+    @Test
+    fun `have filter button`(){
+        viewModel = AdsListViewModel(repository)
+
+        assertEquals(true, viewModel.hasFilterByPropertyTypeAction)
+    }
+
+    @Test
+    fun `updatePropertyTypeFilter() change propertyTypeFilterSelectedOption value`(){
+        viewModel = AdsListViewModel(repository)
+        viewModel.updatePropertyTypeFilter(PropertyTypes.HOUSE_VILLA.value)
+
+        assertEquals(PropertyTypes.HOUSE_VILLA.value, viewModel.propertyTypeFilterSelectedOption)
+    }
+
+    @Test
+    fun `updatePropertyTypeFilter() change propertyTypeFilterActionIconId value`(){
+        viewModel = AdsListViewModel(repository)
+        assertEquals(R.drawable.outline_filter_list_off, viewModel.propertyTypeFilterActionIconId)
+
+        viewModel.updatePropertyTypeFilter(PropertyTypes.HOUSE_VILLA.value)
+
+        assertEquals(R.drawable.outline_filter_list, viewModel.propertyTypeFilterActionIconId)
     }
 }

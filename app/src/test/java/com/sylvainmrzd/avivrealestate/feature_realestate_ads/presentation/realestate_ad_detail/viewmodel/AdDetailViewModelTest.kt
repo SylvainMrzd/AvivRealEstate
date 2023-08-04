@@ -11,6 +11,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.setMain
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNotEquals
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -65,5 +66,19 @@ class AdDetailViewModelTest {
         val actualResponse = viewModel.adDetail.getOrAwaitValueTest().peekContent().data
 
         assertEquals(response.toString(), actualResponse.toString())
+    }
+
+    @Test
+    fun `have back button`(){
+        viewModel = AdDetailViewModel(repository, savedStateHandle)
+
+        assertEquals(true, viewModel.hasBackButton)
+    }
+
+    @Test
+    fun `don't have filter button`(){
+        viewModel = AdDetailViewModel(repository, savedStateHandle)
+
+        assertNotEquals(true, viewModel.hasFilterByPropertyTypeAction)
     }
 }
