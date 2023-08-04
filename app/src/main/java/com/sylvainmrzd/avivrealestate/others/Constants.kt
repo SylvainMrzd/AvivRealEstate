@@ -15,4 +15,5 @@ object Constants {
 
     const val UNKNOWN_ERROR = "An unknown error occurred"
     const val CANNOT_REACH_SERVER_ERROR = "Couldn't reach the server. Check your internet connection"
+    const val FILTERED_LIST_EMPTY_ERROR = "No ad matches the selected criteria"
 }

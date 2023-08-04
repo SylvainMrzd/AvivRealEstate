@@ -3,9 +3,7 @@ package com.sylvainmrzd.avivrealestate.feature_realestate_ads.presentation.reale
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Surface
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -32,8 +30,8 @@ fun AdDetailScreen(
             .nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
             TopBar(
-                hasBackButton = true,
-                scrollBehavior = scrollBehavior
+                scrollBehavior = scrollBehavior,
+                viewModel = viewModel
             ) {
                 navController.navigateUp()
             }

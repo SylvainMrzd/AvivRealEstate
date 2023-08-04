@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sylvainmrzd.avivrealestate.feature_realestate_ads.data.repository.AvivRealEstateRepository
 import com.sylvainmrzd.avivrealestate.feature_realestate_ads.domain.model.Ad
+import com.sylvainmrzd.avivrealestate.feature_realestate_ads.presentation.BaseViewModel
 import com.sylvainmrzd.avivrealestate.feature_realestate_ads.presentation.util.AdElements
 import com.sylvainmrzd.avivrealestate.feature_realestate_ads.presentation.util.UiText
 import com.sylvainmrzd.avivrealestate.others.Event
@@ -26,7 +27,10 @@ import javax.inject.Inject
 class AdDetailViewModel @Inject constructor(
     private val avivRepository: AvivRealEstateRepository,
     savedStateHandle: SavedStateHandle
-) : ViewModel() {
+) : BaseViewModel() {
+
+    override var hasBackButton = true
+    override var hasFilterByPropertyTypeAction = false
 
     var adInfo: Map<AdElements, UiText>? by mutableStateOf(mutableMapOf())
     var errorMessage: String? by mutableStateOf("")

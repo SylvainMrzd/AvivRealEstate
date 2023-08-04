@@ -24,7 +24,9 @@ import com.sylvainmrzd.avivrealestate.R
 @Composable
 fun DataLoadFailedMessage(
     modifier: Modifier,
-    onClick: () -> Unit
+    text: String? = stringResource(R.string.fetching_data_error),
+    hasRetryAction: Boolean = true,
+    onClick: () -> Unit = {}
 ) {
     Column(
         modifier = modifier
@@ -39,14 +41,16 @@ fun DataLoadFailedMessage(
             contentDescription = stringResource(R.string.data_loading_error_image_content_description)
         )
         Text(
-            text = stringResource(R.string.fetching_data_error),
+            text = text ?: stringResource(R.string.fetching_data_error),
             textAlign = TextAlign.Center
         )
-        Button(
-            modifier = Modifier.padding(top = 8.dp),
-            onClick = { onClick() }
-        ) {
-            Text(text = stringResource(R.string.retry))
+        if (hasRetryAction) {
+            Button(
+                modifier = Modifier.padding(top = 8.dp),
+                onClick = { onClick() }
+            ) {
+                Text(text = stringResource(R.string.retry))
+            }
         }
     }
 }

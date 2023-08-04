@@ -6,15 +6,16 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sylvainmrzd.avivrealestate.feature_realestate_ads.data.repository.AvivRealEstateRepository
 import com.sylvainmrzd.avivrealestate.feature_realestate_ads.domain.model.Ad
 import com.sylvainmrzd.avivrealestate.feature_realestate_ads.domain.model.Items
+import com.sylvainmrzd.avivrealestate.feature_realestate_ads.presentation.BaseViewModel
 import com.sylvainmrzd.avivrealestate.others.Status
 import com.sylvainmrzd.avivrealestate.feature_realestate_ads.presentation.util.AdElements
 import com.sylvainmrzd.avivrealestate.feature_realestate_ads.presentation.util.UiText
 import com.sylvainmrzd.avivrealestate.feature_realestate_ads.presentation.realestate_ads_list.AdsState
+import com.sylvainmrzd.avivrealestate.others.Constants
 import com.sylvainmrzd.avivrealestate.others.Event
 import com.sylvainmrzd.avivrealestate.others.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -27,7 +28,10 @@ import javax.inject.Inject
 @HiltViewModel
 class AdsListViewModel @Inject constructor(
     private val avivRepository: AvivRealEstateRepository
-) : ViewModel() {
+) : BaseViewModel() {
+
+    override var hasBackButton = false
+    override var hasFilterByPropertyTypeAction = true
 
     var errorMessage: String? by mutableStateOf("")
     var isAdsFetchingInProgress by mutableStateOf(true)
@@ -67,6 +71,16 @@ class AdsListViewModel @Inject constructor(
                         isAdsFetchingInProgress = false
                         resource.data?.let {
                             adsListItems = it.items
+
+                            if (propertyTypeFilterSelectedOption.isNotEmpty()) {
+                                adsListItems = adsListItems.filter {ad ->
+                                    ad.propertyType == propertyTypeFilterSelectedOption
+                                }
+                                if (adsListItems.isEmpty()) {
+                                    errorMessage = Constants.FILTERED_LIST_EMPTY_ERROR
+                                }
+                            }
+
                         }
                     }
                 }
@@ -80,5 +94,10 @@ class AdsListViewModel @Inject constructor(
                 _state.value = state.value.copy(ads = list)
             }
         }
+    }
+
+    override fun updatePropertyTypeFilter(filter: String) {
+        super.updatePropertyTypeFilter(filter)
+        fetchAdsList()
     }
 }

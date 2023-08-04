@@ -9,4 +9,8 @@
     <string name="retry">Réessayer</string>
     <string name="fetching_data_error">Erreur lors de la récupération des données</string>
     <string name="data_loading_error_image_content_description">Echec du chargement des données</string>
+    <string name="back_icon_content_description">Bouton retour</string>
+    <string name="filtrer_icon_content_description">Filtrer par type de propriété</string>
+    <string name="check_icon_content_description">Option sélectionnée</string>
+    <string name="no_ad_matches_for_criteria">Aucune annonce ne correspond aux critères sélectionnés</string>
 </resources>

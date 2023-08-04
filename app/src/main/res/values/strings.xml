@@ -12,4 +12,8 @@
     <string name="retry">Retry</string>
     <string name="fetching_data_error">Something wrong happened while fetching data</string>
     <string name="data_loading_error_image_content_description">Failed to load data</string>
+    <string name="back_icon_content_description">Back button</string>
+    <string name="filtrer_icon_content_description">Filtrer by property type</string>
+    <string name="check_icon_content_description">Option selected</string>
+    <string name="no_ad_matches_for_criteria">No ad matches the selected criteria</string>
 </resources>

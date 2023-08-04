@@ -11,8 +11,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.sylvainmrzd.avivrealestate.R
 import com.sylvainmrzd.avivrealestate.feature_realestate_ads.presentation.util.AdElements
 import com.sylvainmrzd.avivrealestate.feature_realestate_ads.presentation.components.AdItem
 import com.sylvainmrzd.avivrealestate.feature_realestate_ads.presentation.components.DataLoadFailedMessage
@@ -39,15 +41,11 @@ fun AdsListScreen(
             .nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
             TopBar(
-                hasBackButton = false,
-                scrollBehavior = scrollBehavior
+                scrollBehavior = scrollBehavior,
+                viewModel = viewModel
             )
         }
     ) { innerPadding ->
-        /**
-         * While the fetch of the ads is in progress, displays 5 shimmer items
-         * Then displays the AdItems list with the fetched data
-         */
         /**
          * While the fetch of the ads is in progress, displays 5 shimmer items
          * Then displays the AdItems list with the fetched data
@@ -80,10 +78,19 @@ fun AdsListScreen(
             }
         }
         when {
+            viewModel.errorMessage == Constants.FILTERED_LIST_EMPTY_ERROR -> {
+                DataLoadFailedMessage(
+                    modifier = Modifier.padding(innerPadding),
+                    text = stringResource(id = R.string.no_ad_matches_for_criteria),
+                    hasRetryAction = false
+                )
+            }
             !viewModel.errorMessage.isNullOrEmpty() -> {
-                DataLoadFailedMessage(modifier = Modifier.padding(innerPadding)) {
-                    viewModel.fetchAdsList()
-                }
+                DataLoadFailedMessage(
+                    modifier = Modifier.padding(innerPadding),
+                    text = stringResource(R.string.fetching_data_error),
+                    onClick = { viewModel.fetchAdsList() }
+                )
             }
         }
     }

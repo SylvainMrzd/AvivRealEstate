@@ -24,6 +24,15 @@ enum class DisplayedScreen {
     AD_OPENED_PHOTO
 }
 
+enum class PropertyTypes(val value: String) {
+    HOUSE_VILLA("Maison - Villa"),
+    APARTMENT("Appartement"),
+    BUILDING("Immeuble"),
+    STORE("Commerce"),
+    LAND("Terrain"),
+    GARAGE_LOCKUP("Garage / Box")
+}
+
 enum class AdElements : AdElementsSettings {
 
     IMAGE_URL,
