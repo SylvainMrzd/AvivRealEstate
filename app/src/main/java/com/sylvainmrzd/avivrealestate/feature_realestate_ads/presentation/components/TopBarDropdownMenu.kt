@@ -14,9 +14,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.sylvainmrzd.avivrealestate.R
+import com.sylvainmrzd.avivrealestate.others.Constants
 
 /**
  * A DropdownMenu to be used for TopAppbar actions
@@ -33,6 +35,7 @@ fun TopBarDropdownMenu(
     }
 
     DropdownMenu(
+        modifier = Modifier.testTag(Constants.TOP_BAR_DROPDOWN_MENU_TAG),
         expanded = expanded,
         onDismissRequest = onDismissRequest
     ) {
@@ -44,6 +47,7 @@ fun TopBarDropdownMenu(
             }
 
             DropdownMenuItem(
+                modifier = Modifier.testTag(Constants.TOP_BAR_DROPDOWN_MENU_OPTION_TAG.plus(option)),
                 text = {
                     Text(
                         modifier = Modifier.padding(end = 24.dp),

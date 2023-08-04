@@ -97,6 +97,12 @@ class AdDetailScreenTest {
     }
 
     @Test
+    fun filter_action_does_not_exist() {
+        composeRule.waitUntilTimeout(8_000)
+        composeRule.onNodeWithTag(Constants.TOP_BAR_FILTER_ACTION_TAG).assertDoesNotExist()
+    }
+
+    @Test
     fun ads_list_is_displayed_when_back_button_is_clicked() {
         composeRule.waitUntilTimeout(8_000)
         composeRule.onNodeWithTag(Constants.BACK_BUTTON_TAG).performClick()

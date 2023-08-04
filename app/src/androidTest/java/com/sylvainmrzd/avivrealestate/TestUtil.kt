@@ -4,6 +4,9 @@ import androidx.compose.ui.test.junit4.ComposeContentTestRule
 import java.util.Timer
 import kotlin.concurrent.schedule
 
+/**
+ * Allows to wait [timeoutMillis] seconds in UI tests before continuing the test execution
+ */
 fun ComposeContentTestRule.waitUntilTimeout(
     timeoutMillis: Long
 ) {

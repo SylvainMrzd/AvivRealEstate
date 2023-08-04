@@ -57,7 +57,7 @@ fun TopBar(
         actions = {
             when {
                 viewModel.hasFilterByPropertyTypeAction -> {
-                    Box {
+                    Box(modifier = Modifier.testTag(Constants.TOP_BAR_FILTER_ACTION_TAG)) {
                         IconButton(onClick = { filterDropDownMenuExpanded = true }) {
                             Icon(
                                 painter = painterResource(id = viewModel.propertyTypeFilterActionIconId),
