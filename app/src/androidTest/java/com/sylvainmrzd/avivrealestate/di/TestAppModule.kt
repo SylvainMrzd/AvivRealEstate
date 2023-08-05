@@ -1,9 +1,9 @@
 package com.sylvainmrzd.avivrealestate.di
 
-import com.sylvainmrzd.avivrealestate.feature_realestate_ads.data.data_source.AvivApi
-import com.sylvainmrzd.avivrealestate.feature_realestate_ads.data.data_source.MockInterceptor
-import com.sylvainmrzd.avivrealestate.feature_realestate_ads.data.repository.AvivRealEstateRepository
-import com.sylvainmrzd.avivrealestate.feature_realestate_ads.data.repository.DefaultAvivRealEstateRepository
+import com.sylvainmrzd.avivrealestate.feature_ads.data.data_source.AvivApi
+import com.sylvainmrzd.avivrealestate.feature_ads.data.data_source.MockInterceptor
+import com.sylvainmrzd.avivrealestate.feature_ads.data.repository.AvivRealEstateRepository
+import com.sylvainmrzd.avivrealestate.feature_ads.data.repository.DefaultAvivRealEstateRepository
 import com.sylvainmrzd.avivrealestate.others.Constants
 import dagger.Module
 import dagger.Provides
