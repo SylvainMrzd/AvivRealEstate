@@ -13,4 +13,5 @@
     <string name="filtrer_icon_content_description">Filtrer par type de propriété</string>
     <string name="check_icon_content_description">Option sélectionnée</string>
     <string name="no_ad_matches_for_criteria">Aucune annonce ne correspond aux critères sélectionnés</string>
+    <string name="close_full_screen_icon_content_description">Fermer le plein écran</string>
 </resources>

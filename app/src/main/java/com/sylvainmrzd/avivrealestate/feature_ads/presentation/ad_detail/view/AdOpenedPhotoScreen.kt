@@ -115,7 +115,7 @@ fun AdOpenedPhotoScreen(
             Icon(
                 modifier = Modifier.size(24.dp),
                 imageVector = Icons.Default.Close,
-                contentDescription = "Close full screen",
+                contentDescription = stringResource(R.string.close_full_screen_icon_content_description),
                 tint = Color.White
             )
         }
