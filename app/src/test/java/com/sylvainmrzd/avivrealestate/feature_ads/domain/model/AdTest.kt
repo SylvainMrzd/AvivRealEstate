@@ -28,14 +28,19 @@ private const val PROFESSIONAL_STRING = "Being sold by SeLoger"
 @RunWith(MockitoJUnitRunner::class)
 class AdTest {
 
+    //region Mock
     @Mock
     private lateinit var mockContext: Context
+    //endregion
 
+    //region Before
     @Before
     fun setup(){
         MockitoAnnotations.openMocks(this)
     }
+    //endregion
 
+    //region Tests
     @Test
     fun `transform Ad into a Map of AdElements and UiText`() {
         val mockContext = mock<Context> {
@@ -120,4 +125,5 @@ class AdTest {
             testedMap[AdElements.PROFESSIONAL]?.asInt()
         )
     }
+    //endregion
 }

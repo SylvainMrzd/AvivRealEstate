@@ -5,6 +5,9 @@ import android.content.Context
 import androidx.test.runner.AndroidJUnitRunner
 import dagger.hilt.android.testing.HiltTestApplication
 
+/**
+ * To be used for dependency injection in tests
+ */
 class HiltTestRunner : AndroidJUnitRunner() {
 
     override fun newApplication(

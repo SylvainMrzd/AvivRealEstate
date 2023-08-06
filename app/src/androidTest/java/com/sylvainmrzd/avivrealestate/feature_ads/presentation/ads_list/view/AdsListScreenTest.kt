@@ -25,6 +25,7 @@ import org.junit.Test
 @UninstallModules(AppModule::class)
 class AdsListScreenTest {
 
+    //region Rules
     @get:Rule(order = 0)
     val hiltRule = HiltAndroidRule(this)
 
@@ -33,12 +34,16 @@ class AdsListScreenTest {
 
     @get:Rule(order = 2)
     var instantTaskExecutorRule = InstantTaskExecutorRule()
+    //endregion
 
+    //region Before
     @Before
     fun setup() {
         hiltRule.inject()
     }
+    //endregion
 
+    //region Tests
     @Test
     fun scrollAdsListUpAndDown() {
         composeRule.waitUntilTimeout(10_000)
@@ -113,4 +118,5 @@ class AdsListScreenTest {
             .onNodeWithTag(Constants.TOP_BAR_DROPDOWN_MENU_OPTION_TAG.plus(PropertyTypes.HOUSE_VILLA.value))
             .performClick()
     }
+    //endregion
 }

@@ -20,13 +20,18 @@ import org.junit.Test
 @OptIn(ExperimentalCoroutinesApi::class)
 class AdDetailViewModelTest {
 
+    //region Rules
     @get:Rule
     var instantTaskExecutorRule = InstantTaskExecutorRule()
+    //endregion
 
+    //region Variables
     private lateinit var viewModel: AdDetailViewModel
     private lateinit var savedStateHandle: SavedStateHandle
     private var repository = FakeAvivRealEstateRepositoryImpl()
+    //endregion
 
+    //region Before
     @Before
     fun setup() {
         Dispatchers.setMain(Dispatchers.Unconfined)
@@ -34,7 +39,9 @@ class AdDetailViewModelTest {
         savedStateHandle = SavedStateHandle()
         savedStateHandle["adId"] = 1
     }
+    //endregion
 
+    //region Tests
     @Test
     fun `loading ad detail get an error`() {
         repository.setShouldReturnNetworkError(true)
@@ -81,4 +88,5 @@ class AdDetailViewModelTest {
 
         assertNotEquals(true, viewModel.hasFilterByPropertyTypeAction)
     }
+    //endregion
 }

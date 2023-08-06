@@ -31,6 +31,7 @@ import org.junit.Test
 @UninstallModules(AppModule::class)
 class AdDetailScreenTest {
 
+    //region Rules
     @get:Rule(order = 0)
     val hiltRule = HiltAndroidRule(this)
 
@@ -39,9 +40,13 @@ class AdDetailScreenTest {
 
     @get:Rule(order = 2)
     var instantTaskExecutorRule = InstantTaskExecutorRule()
+    //endregion
 
+    //region Variables
     private lateinit var device: UiDevice
+    //endregion
 
+    //region Before
     @Before
     fun setup() {
         hiltRule.inject()
@@ -83,7 +88,9 @@ class AdDetailScreenTest {
         }
         device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
     }
+    //endregion
 
+    //region Tests
     @Test
     fun top_bar_is_displayed() {
         composeRule.waitUntilTimeout(8_000)
@@ -130,6 +137,5 @@ class AdDetailScreenTest {
         composeRule.onNodeWithTag(Constants.AD_DETAIL_FULLSCREEN_PHOTO_CLOSE_BUTTON_TAG).performClick()
         composeRule.onNodeWithTag(Constants.AD_DETAIL_CONTENT_TAG).assertIsDisplayed()
     }
-
-
+    //endregion
 }
