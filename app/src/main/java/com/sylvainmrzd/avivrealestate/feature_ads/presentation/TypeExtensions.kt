@@ -56,7 +56,11 @@ fun Float.formatArea(): UiText.StringResource {
  */
 fun Int.formatRooms(): UiText.StringResource {
     return UiText.StringResource(
-        resId = R.string.rooms,
+        resId =
+            when(this) {
+                1 -> R.string.one_room
+                else -> R.string.rooms
+            },
         this.toString()
     )
 }
@@ -66,7 +70,11 @@ fun Int.formatRooms(): UiText.StringResource {
  */
 fun Int.formatBedrooms(): UiText.StringResource {
     return UiText.StringResource(
-        resId = R.string.bedrooms,
+        resId =
+            when(this) {
+                1 -> R.string.one_bedroom
+                else -> R.string.bedrooms
+            },
         this.toString()
     )
 }
