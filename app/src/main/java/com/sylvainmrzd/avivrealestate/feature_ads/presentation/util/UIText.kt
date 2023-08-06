@@ -7,7 +7,8 @@ import androidx.compose.ui.res.stringResource
 
 /**
  * Sealed class used to pass text from ViewModel to UI
- * [String] is a String that returns its own value
+ * [StringValue] is a String that returns its own value
+ * [IntValue] is an Int that return its own value
  * [StringResource] returns a String built from a resource id and optional arguments
  * [CombinedStrings] returns a concatenated String built from multiple [String] and/or [StringResource]
  */
@@ -24,6 +25,9 @@ sealed class UiText {
         val resList: List<UiText>
     ): UiText()
 
+    /**
+     * Converts UiText to String in composable context
+     */
     @Composable
     fun asString(): String? {
         return when(this) {
@@ -42,6 +46,9 @@ sealed class UiText {
         }
     }
 
+    /**
+     * Converts UiText to String with [context]
+     */
     fun asStringWith(context: Context): String? {
         return when(this) {
             is StringValue -> value
@@ -59,6 +66,9 @@ sealed class UiText {
         }
     }
 
+    /**
+     * Converts UiText to Int
+     */
     fun asInt(): Int? {
         return when(this) {
             is IntValue -> value
