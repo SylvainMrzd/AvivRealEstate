@@ -4,6 +4,7 @@ import com.sylvainmrzd.avivrealestate.feature_ads.data.data_source.AvivApi
 import com.sylvainmrzd.avivrealestate.feature_ads.data.data_source.MockInterceptor
 import com.sylvainmrzd.avivrealestate.feature_ads.domain.model.Ad
 import com.sylvainmrzd.avivrealestate.feature_ads.domain.model.Items
+import com.sylvainmrzd.avivrealestate.feature_ads.domain.repository.AvivRealEstateRepository
 import com.sylvainmrzd.avivrealestate.others.Constants
 import com.sylvainmrzd.avivrealestate.others.Resource
 import okhttp3.OkHttpClient
@@ -13,7 +14,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 /**
  * Repository used for tests to simulate the api behavior
  */
-class FakeAvivRealEstateRepository : AvivRealEstateRepository {
+class FakeAvivRealEstateRepositoryImpl : AvivRealEstateRepository {
 
     private var shouldReturnNetworkError = false
     private var shouldMockRequest = false

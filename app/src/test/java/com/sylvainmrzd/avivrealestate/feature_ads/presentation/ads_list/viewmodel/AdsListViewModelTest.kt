@@ -3,7 +3,7 @@ package com.sylvainmrzd.avivrealestate.feature_ads.presentation.ads_list.viewmod
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.google.gson.Gson
 import com.sylvainmrzd.avivrealestate.R
-import com.sylvainmrzd.avivrealestate.feature_ads.data.repository.FakeAvivRealEstateRepository
+import com.sylvainmrzd.avivrealestate.feature_ads.data.repository.FakeAvivRealEstateRepositoryImpl
 import com.sylvainmrzd.avivrealestate.feature_ads.domain.model.Items
 import com.sylvainmrzd.avivrealestate.feature_ads.presentation.util.PropertyTypes
 import com.sylvainmrzd.avivrealestate.getOrAwaitValueTest
@@ -27,7 +27,7 @@ class AdsListViewModelTest {
 
     //region Variables
     private lateinit var viewModel: AdsListViewModel
-    private var repository = FakeAvivRealEstateRepository()
+    private var repository = FakeAvivRealEstateRepositoryImpl()
     //endregion
 
     //region Before

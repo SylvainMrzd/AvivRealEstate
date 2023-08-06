@@ -3,6 +3,7 @@ package com.sylvainmrzd.avivrealestate.feature_ads.data.repository
 import com.sylvainmrzd.avivrealestate.feature_ads.data.data_source.AvivApi
 import com.sylvainmrzd.avivrealestate.feature_ads.domain.model.Ad
 import com.sylvainmrzd.avivrealestate.feature_ads.domain.model.Items
+import com.sylvainmrzd.avivrealestate.feature_ads.domain.repository.AvivRealEstateRepository
 import com.sylvainmrzd.avivrealestate.others.Constants
 import com.sylvainmrzd.avivrealestate.others.Resource
 import javax.inject.Inject
@@ -10,7 +11,7 @@ import javax.inject.Inject
 /**
  * Repository to get data from the [avivApi]
  */
-class DefaultAvivRealEstateRepository @Inject constructor(
+class AvivRealEstateRepositoryImpl @Inject constructor(
     private val avivApi: AvivApi
 ) : AvivRealEstateRepository {
 

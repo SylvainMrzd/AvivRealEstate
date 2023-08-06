@@ -3,7 +3,7 @@ package com.sylvainmrzd.avivrealestate.feature_ads.presentation.ad_detail.viewmo
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.SavedStateHandle
 import com.google.gson.Gson
-import com.sylvainmrzd.avivrealestate.feature_ads.data.repository.FakeAvivRealEstateRepository
+import com.sylvainmrzd.avivrealestate.feature_ads.data.repository.FakeAvivRealEstateRepositoryImpl
 import com.sylvainmrzd.avivrealestate.feature_ads.domain.model.Ad
 import com.sylvainmrzd.avivrealestate.getOrAwaitValueTest
 import com.sylvainmrzd.avivrealestate.others.Status
@@ -25,7 +25,7 @@ class AdDetailViewModelTest {
 
     private lateinit var viewModel: AdDetailViewModel
     private lateinit var savedStateHandle: SavedStateHandle
-    private var repository = FakeAvivRealEstateRepository()
+    private var repository = FakeAvivRealEstateRepositoryImpl()
 
     @Before
     fun setup() {

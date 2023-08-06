@@ -7,7 +7,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.sylvainmrzd.avivrealestate.feature_ads.data.repository.AvivRealEstateRepository
+import com.sylvainmrzd.avivrealestate.feature_ads.domain.repository.AvivRealEstateRepository
 import com.sylvainmrzd.avivrealestate.feature_ads.domain.model.Ad
 import com.sylvainmrzd.avivrealestate.feature_ads.domain.model.Items
 import com.sylvainmrzd.avivrealestate.feature_ads.presentation.BaseViewModel

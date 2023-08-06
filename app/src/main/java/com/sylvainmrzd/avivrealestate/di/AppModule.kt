@@ -1,8 +1,8 @@
 package com.sylvainmrzd.avivrealestate.di
 
 import com.sylvainmrzd.avivrealestate.feature_ads.data.data_source.AvivApi
-import com.sylvainmrzd.avivrealestate.feature_ads.data.repository.AvivRealEstateRepository
-import com.sylvainmrzd.avivrealestate.feature_ads.data.repository.DefaultAvivRealEstateRepository
+import com.sylvainmrzd.avivrealestate.feature_ads.domain.repository.AvivRealEstateRepository
+import com.sylvainmrzd.avivrealestate.feature_ads.data.repository.AvivRealEstateRepositoryImpl
 import com.sylvainmrzd.avivrealestate.others.Constants
 import dagger.Module
 import dagger.Provides
@@ -34,5 +34,5 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideDefaultAvivRepository(api: AvivApi) = DefaultAvivRealEstateRepository(api) as AvivRealEstateRepository
+    fun provideDefaultAvivRepository(api: AvivApi) = AvivRealEstateRepositoryImpl(api) as AvivRealEstateRepository
 }

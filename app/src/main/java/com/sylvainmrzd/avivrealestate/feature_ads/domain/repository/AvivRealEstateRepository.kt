@@ -1,4 +1,4 @@
-package com.sylvainmrzd.avivrealestate.feature_ads.data.repository
+package com.sylvainmrzd.avivrealestate.feature_ads.domain.repository
 
 import com.sylvainmrzd.avivrealestate.feature_ads.domain.model.Ad
 import com.sylvainmrzd.avivrealestate.feature_ads.domain.model.Items
