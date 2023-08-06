@@ -12,7 +12,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.res.dimensionResource
+import com.sylvainmrzd.avivrealestate.R
 import com.sylvainmrzd.avivrealestate.feature_ads.presentation.util.AdElements
 import com.sylvainmrzd.avivrealestate.feature_ads.presentation.util.DisplayedScreen
 
@@ -27,6 +28,9 @@ fun SpecificationsRow(key: AdElements, specifications: String) {
             .height(IntrinsicSize.Min) //intrinsic measurements
             .fillMaxWidth()
     ) {
+        val mediumPadding = dimensionResource(id = R.dimen.medium_padding)
+        val dividerWidth = dimensionResource(id = R.dimen.divider_width)
+
         val specificationsList = specifications.split(";")
         for (spec in specificationsList) {
             Text(
@@ -39,9 +43,9 @@ fun SpecificationsRow(key: AdElements, specifications: String) {
                 Divider(
                     color = Color.Gray,
                     modifier = Modifier
-                        .padding(start = 6.dp, end = 6.dp, bottom = 8.dp)
+                        .padding(start = mediumPadding, end = mediumPadding, bottom = mediumPadding)
                         .fillMaxHeight()
-                        .width(1.dp)
+                        .width(dividerWidth)
                 )
             }
         }

@@ -12,7 +12,8 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.res.dimensionResource
+import com.sylvainmrzd.avivrealestate.R
 import com.sylvainmrzd.avivrealestate.feature_ads.presentation.shimmerEffect
 
 /**
@@ -21,62 +22,69 @@ import com.sylvainmrzd.avivrealestate.feature_ads.presentation.shimmerEffect
 @Composable
 fun ShimmerAdItem() {
 
+    val imageHeight = dimensionResource(id = R.dimen.image_height)
+    val roundedCornerShapeSize = dimensionResource(id = R.dimen.rounded_corner_shape_size)
+    val mediumPadding = dimensionResource(id = R.dimen.medium_padding)
+    val smallPadding = dimensionResource(id = R.dimen.small_padding)
+    val bigTextShimmerHeight = dimensionResource(id = R.dimen.big_text_shimmer_height)
+    val mediumTextShimmerHeight = dimensionResource(id = R.dimen.medium_text_shimmer_height)
+
     ElevatedCard(
         modifier = Modifier
-            .padding(4.dp)
+            .padding(smallPadding)
             .fillMaxWidth(),
-        shape = RoundedCornerShape(8.dp)
+        shape = RoundedCornerShape(roundedCornerShapeSize)
     ) {
         Surface {
             Column {
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(200.dp)
-                        .clip(RoundedCornerShape(8.dp))
+                        .height(imageHeight)
+                        .clip(RoundedCornerShape(roundedCornerShapeSize))
                         .shimmerEffect()
                 )
-                Spacer(modifier = Modifier.height(8.dp))
+                Spacer(modifier = Modifier.height(mediumPadding))
                 Box(
                     modifier = Modifier
                         .fillMaxWidth(0.5f)
-                        .height(30.dp)
-                        .padding(start = 8.dp, end = 8.dp)
+                        .height(bigTextShimmerHeight)
+                        .padding(start = mediumPadding, end = mediumPadding)
                         .shimmerEffect()
                 )
-                Spacer(modifier = Modifier.height(8.dp))
+                Spacer(modifier = Modifier.height(mediumPadding))
                 Box(
                     modifier = Modifier
                         .fillMaxWidth(0.3f)
-                        .height(14.dp)
-                        .padding(start = 8.dp, end = 8.dp)
+                        .height(mediumTextShimmerHeight)
+                        .padding(start = mediumPadding, end = mediumPadding)
                         .shimmerEffect()
                 )
-                Spacer(modifier = Modifier.height(8.dp))
+                Spacer(modifier = Modifier.height(mediumPadding))
                 Box(
                     modifier = Modifier
                         .fillMaxWidth(0.7f)
-                        .height(14.dp)
-                        .padding(start = 8.dp, end = 8.dp)
+                        .height(mediumTextShimmerHeight)
+                        .padding(start = mediumPadding, end = mediumPadding)
                         .shimmerEffect()
                 )
-                Spacer(modifier = Modifier.height(8.dp))
+                Spacer(modifier = Modifier.height(mediumPadding))
                 Box(
                     modifier = Modifier
                         .fillMaxWidth(0.3f)
-                        .height(14.dp)
-                        .padding(start = 8.dp, end = 8.dp)
+                        .height(mediumTextShimmerHeight)
+                        .padding(start = mediumPadding, end = mediumPadding)
                         .shimmerEffect()
                 )
-                Spacer(modifier = Modifier.height(8.dp))
+                Spacer(modifier = Modifier.height(mediumPadding))
                 Box(
                     modifier = Modifier
                         .fillMaxWidth(0.5f)
-                        .height(14.dp)
-                        .padding(start = 8.dp, end = 8.dp)
+                        .height(mediumTextShimmerHeight)
+                        .padding(start = mediumPadding, end = mediumPadding)
                         .shimmerEffect()
                 )
-                Spacer(modifier = Modifier.height(8.dp))
+                Spacer(modifier = Modifier.height(mediumPadding))
             }
         }
     }

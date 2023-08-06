@@ -15,8 +15,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
 import com.sylvainmrzd.avivrealestate.R
 import com.sylvainmrzd.avivrealestate.others.Constants
 
@@ -50,7 +50,8 @@ fun TopBarDropdownMenu(
                 modifier = Modifier.testTag(Constants.TOP_BAR_DROPDOWN_MENU_OPTION_TAG.plus(option)),
                 text = {
                     Text(
-                        modifier = Modifier.padding(end = 24.dp),
+                        modifier = Modifier
+                            .padding(end = dimensionResource(id = R.dimen.dropdown_menu_item_end_padding)),
                         text = option
                     )
                 },

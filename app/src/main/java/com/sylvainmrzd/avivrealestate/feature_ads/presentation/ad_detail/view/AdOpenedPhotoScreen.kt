@@ -25,6 +25,7 @@ import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
@@ -113,7 +114,7 @@ fun AdOpenedPhotoScreen(
             onClick = { navController.navigateUp() }
         ) {
             Icon(
-                modifier = Modifier.size(24.dp),
+                modifier = Modifier.size(dimensionResource(id = R.dimen.icon_size)),
                 imageVector = Icons.Default.Close,
                 contentDescription = stringResource(R.string.close_full_screen_icon_content_description),
                 tint = Color.White

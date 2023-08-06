@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--region Padding-->
+    <dimen name="small_padding">4dp</dimen>
+    <dimen name="medium_padding">8dp</dimen>
+    <dimen name="big_padding">16dp</dimen>
+    <dimen name="dropdown_menu_item_end_padding">24dp</dimen>
+    <!--endregion-->
+
+    <!--region Shimmer-->
+    <dimen name="big_text_shimmer_height">30dp</dimen>
+    <dimen name="medium_text_shimmer_height">14dp</dimen>
+    <!--endregion-->
+
+    <!--region Image sizes-->
+    <dimen name="image_height">200dp</dimen>
+    <dimen name="icon_size">24dp</dimen>
+    <dimen name="error_image_size">80dp</dimen>
+    <!--endregion-->
+
+    <!--region Corner shapes-->
+    <dimen name="rounded_corner_shape_size">8dp</dimen>
+    <!--endregion-->
+
+    <!--region Dividers-->
+    <dimen name="divider_width">1dp</dimen>
+    <!--endregion-->
+</resources>

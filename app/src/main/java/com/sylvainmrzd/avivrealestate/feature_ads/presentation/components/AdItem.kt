@@ -12,8 +12,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
 import coil.compose.SubcomposeAsyncImage
 import com.sylvainmrzd.avivrealestate.R
 import com.sylvainmrzd.avivrealestate.feature_ads.presentation.util.AdElements
@@ -32,6 +32,9 @@ fun AdItem(
     onClick: (Int) -> Unit
 ) {
 
+    val roundedCornerShapeSize = dimensionResource(id = R.dimen.rounded_corner_shape_size)
+    val smallPadding = dimensionResource(id = R.dimen.small_padding)
+
     val orderedInfoToDisplay = listOf(
         AdElements.IMAGE_URL,
         AdElements.PRICE,
@@ -43,11 +46,11 @@ fun AdItem(
 
     ElevatedCard(
         modifier = Modifier
-            .padding(4.dp)
+            .padding(smallPadding)
             .fillMaxWidth()
             .clickable { onClick(index) }
             .testTag(Constants.ADS_ITEM_TAG.plus(index)),
-        shape = RoundedCornerShape(8.dp)
+        shape = RoundedCornerShape(roundedCornerShapeSize)
     ) {
         Surface {
             Column(

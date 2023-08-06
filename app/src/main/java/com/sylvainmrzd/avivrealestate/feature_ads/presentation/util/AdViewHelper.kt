@@ -9,9 +9,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
+import com.sylvainmrzd.avivrealestate.R
 
 /**
  * Enum that lists elements contained in an ad
@@ -72,28 +73,54 @@ enum class AdElements : AdElementsSettings {
         }
     }
 
+    @Composable
     override fun getViewModifier(displayedScreen: DisplayedScreen): Modifier {
+        val imageHeight = dimensionResource(id = R.dimen.image_height)
+        val roundedCornerShapeSize = dimensionResource(id = R.dimen.rounded_corner_shape_size)
+        val mediumPadding = dimensionResource(id = R.dimen.medium_padding)
+        val bigPadding = dimensionResource(id = R.dimen.big_padding)
+
         return when(displayedScreen) {
             DisplayedScreen.ADS_LIST -> {
                 when(this) {
                     IMAGE_URL -> Modifier
                         .fillMaxWidth()
-                        .height(200.dp)
-                        .clip(RoundedCornerShape(8.dp))
-                    PRICE, SPECIFICATIONS, PROFESSIONAL -> Modifier.padding(start = 8.dp, end = 8.dp, bottom = 8.dp)
-                    else -> Modifier.padding(start = 8.dp, end = 8.dp)
+                        .height(imageHeight)
+                        .clip(RoundedCornerShape(roundedCornerShapeSize))
+                    PRICE, SPECIFICATIONS, PROFESSIONAL ->
+                        Modifier.padding(
+                            start = mediumPadding,
+                            end = mediumPadding,
+                            bottom = mediumPadding
+                        )
+                    else -> Modifier.padding(start = mediumPadding, end = mediumPadding)
                 }
             }
             DisplayedScreen.AD_DETAIL -> {
                 when(this) {
-                    PROPERTY_TYPE -> Modifier.padding(8.dp)
-                    SPECIFICATIONS -> Modifier.padding(start = 8.dp, end = 8.dp, bottom = 8.dp)
+                    PROPERTY_TYPE -> Modifier.padding(mediumPadding)
+                    SPECIFICATIONS ->
+                        Modifier.padding(
+                            start = mediumPadding,
+                            end = mediumPadding,
+                            bottom = mediumPadding
+                        )
                     IMAGE_URL -> Modifier
                         .fillMaxWidth()
-                        .height(200.dp)
-                    PRICE -> Modifier.padding(start = 8.dp, end = 8.dp, top = 16.dp)
-                    PROFESSIONAL -> Modifier.padding(start = 8.dp, end = 8.dp, top = 16.dp, bottom = 8.dp)
-                    else -> Modifier.padding(start = 8.dp, end = 8.dp)
+                        .height(imageHeight)
+                    PRICE ->
+                        Modifier.padding(
+                            start = mediumPadding,
+                            end = mediumPadding,
+                            top = bigPadding
+                        )
+                    PROFESSIONAL ->
+                        Modifier.padding(
+                            start = mediumPadding,
+                            end = mediumPadding,
+                            top = bigPadding,
+                            bottom = mediumPadding)
+                    else -> Modifier.padding(start = mediumPadding, end = mediumPadding)
                 }
             }
             DisplayedScreen.AD_OPENED_PHOTO -> {
@@ -112,5 +139,6 @@ private interface AdElementsSettings {
     fun getTextStyle(displayedScreen: DisplayedScreen) : TextStyle
     @Composable
     fun getTextFontWeight() : FontWeight
+    @Composable
     fun getViewModifier(displayedScreen: DisplayedScreen): Modifier
 }

@@ -11,9 +11,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
 import com.sylvainmrzd.avivrealestate.R
 import com.sylvainmrzd.avivrealestate.feature_ads.presentation.shimmerEffect
 
@@ -25,7 +25,7 @@ fun ImagePlaceholder() {
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .height(200.dp)
+            .height(dimensionResource(id = R.dimen.image_height))
     ) {
         Image(
             modifier = Modifier
@@ -45,13 +45,13 @@ fun ErrorImage() {
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .height(200.dp)
+            .height(dimensionResource(id = R.dimen.image_height))
             .background(Color.LightGray)
     ) {
         Image(
             modifier = Modifier
                 .align(Alignment.Center)
-                .size(80.dp)
+                .size(dimensionResource(id = R.dimen.error_image_size))
                 .alpha(0.5f),
             painter = painterResource(id = R.drawable.outline_image_not_supported),
             contentDescription = stringResource(R.string.error_image_content_description)
