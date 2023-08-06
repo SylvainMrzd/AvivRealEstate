@@ -17,13 +17,7 @@ class DefaultAvivRealEstateRepository @Inject constructor(
     override suspend fun loadAdsList(): Resource<Items> {
         return try {
             val response = avivApi.getAdsItems()
-            if(response.isSuccessful) {
-                response.body()?.let {
-                    return@let Resource.success(it)
-                } ?: Resource.error(Constants.UNKNOWN_ERROR, null)
-            } else {
-                Resource.error(Constants.UNKNOWN_ERROR, null)
-            }
+            handleResponse(response)
         } catch (e: Exception) {
             Resource.error(Constants.CANNOT_REACH_SERVER_ERROR, null)
         }
@@ -32,13 +26,7 @@ class DefaultAvivRealEstateRepository @Inject constructor(
     override suspend fun loadAdDetail(id: Int): Resource<Ad> {
         return try {
             val response = avivApi.getAdDetail(id)
-            if(response.isSuccessful) {
-                response.body()?.let {
-                    return@let Resource.success(it)
-                } ?: Resource.error(Constants.UNKNOWN_ERROR, null)
-            } else {
-                Resource.error(Constants.UNKNOWN_ERROR, null)
-            }
+            handleResponse(response)
         } catch (e: Exception) {
             Resource.error(Constants.CANNOT_REACH_SERVER_ERROR, null)
         }

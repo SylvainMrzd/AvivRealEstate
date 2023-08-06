@@ -30,13 +30,7 @@ class FakeAvivRealEstateRepository : AvivRealEstateRepository {
             shouldMockRequest -> {
                 try {
                     val response = getMockAvivApi().getAdsItems()
-                    if(response.isSuccessful) {
-                        response.body()?.let {
-                            return@let Resource.success(it)
-                        } ?: Resource.error(Constants.UNKNOWN_ERROR, null)
-                    } else {
-                        Resource.error(Constants.UNKNOWN_ERROR, null)
-                    }
+                    handleResponse(response)
                 } catch (e: Exception) {
                     Resource.error(Constants.CANNOT_REACH_SERVER_ERROR, null)
                 }
@@ -56,13 +50,7 @@ class FakeAvivRealEstateRepository : AvivRealEstateRepository {
             shouldMockRequest -> {
                 try {
                     val response = getMockAvivApi().getAdDetail(id)
-                    if(response.isSuccessful) {
-                        response.body()?.let {
-                            return@let Resource.success(it)
-                        } ?: Resource.error(Constants.UNKNOWN_ERROR, null)
-                    } else {
-                        Resource.error(Constants.UNKNOWN_ERROR, null)
-                    }
+                    handleResponse(response)
                 } catch (e: Exception) {
                     Resource.error(Constants.CANNOT_REACH_SERVER_ERROR, null)
                 }
