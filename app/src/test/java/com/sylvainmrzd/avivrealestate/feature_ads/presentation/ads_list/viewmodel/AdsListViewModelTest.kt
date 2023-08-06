@@ -20,17 +20,24 @@ import org.junit.Test
 @OptIn(ExperimentalCoroutinesApi::class)
 class AdsListViewModelTest {
 
+    //region Rules
     @get:Rule
     var instantTaskExecutorRule = InstantTaskExecutorRule()
+    //endregion
 
+    //region Variables
     private lateinit var viewModel: AdsListViewModel
     private var repository = FakeAvivRealEstateRepository()
+    //endregion
 
+    //region Before
     @Before
     fun setup() {
         Dispatchers.setMain(Dispatchers.Unconfined)
     }
+    //endregion
 
+    //region Tests
     @Test
     fun `loading ads get an error`() {
         repository.setShouldReturnNetworkError(true)
@@ -102,4 +109,5 @@ class AdsListViewModelTest {
 
         assertEquals(R.drawable.outline_filter_list, viewModel.propertyTypeFilterActionIconId)
     }
+    //endregion
 }

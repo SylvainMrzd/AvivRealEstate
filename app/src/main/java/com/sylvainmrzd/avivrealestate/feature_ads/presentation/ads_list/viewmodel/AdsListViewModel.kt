@@ -30,6 +30,7 @@ class AdsListViewModel @Inject constructor(
     private val avivRepository: AvivRealEstateRepository
 ) : BaseViewModel() {
 
+    //region Variables
     override var hasBackButton = false
     override var hasFilterByPropertyTypeAction = true
 
@@ -41,11 +42,15 @@ class AdsListViewModel @Inject constructor(
 
     private val _ads = MutableLiveData<Event<Resource<Items>>>()
     val ads: LiveData<Event<Resource<Items>>> = _ads
+    //endregion
 
+    //region Init
     init {
         fetchAdsList()
     }
+    //endregion
 
+    //region Data fetching
     /**
      * Fetches ads list from the server API
      */
@@ -95,9 +100,12 @@ class AdsListViewModel @Inject constructor(
             }
         }
     }
+    //endregion
 
+    //region Data updates
     override fun updatePropertyTypeFilter(filter: String) {
         super.updatePropertyTypeFilter(filter)
         fetchAdsList()
     }
+    //endregion
 }

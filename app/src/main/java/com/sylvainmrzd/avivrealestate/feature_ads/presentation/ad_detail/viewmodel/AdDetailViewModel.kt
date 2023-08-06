@@ -28,6 +28,7 @@ class AdDetailViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle
 ) : BaseViewModel() {
 
+    //region Variables
     override var hasBackButton = true
     override var hasFilterByPropertyTypeAction = false
 
@@ -39,7 +40,9 @@ class AdDetailViewModel @Inject constructor(
     val adDetail: LiveData<Event<Resource<Ad>>> = _adDetail
 
     var adId: Int = -1
+    //endregion
 
+    //region Init
     init {
         savedStateHandle.get<Int>("adId")?.let { id ->
             if(id != -1) {
@@ -48,7 +51,9 @@ class AdDetailViewModel @Inject constructor(
             }
         }
     }
+    //endregion
 
+    //region Data fetching
     /**
      * Fetches ad detail from the server API
      */
@@ -79,4 +84,5 @@ class AdDetailViewModel @Inject constructor(
             }
         }
     }
+    //endregion
 }

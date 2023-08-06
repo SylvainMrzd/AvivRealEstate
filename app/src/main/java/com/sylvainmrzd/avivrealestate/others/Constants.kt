@@ -2,8 +2,17 @@ package com.sylvainmrzd.avivrealestate.others
 
 object Constants {
 
+    // region API
     const val BASE_URL = "https://gsl-apps-technical-test.dignp.com/"
+    //endregion
 
+    //region Errors
+    const val UNKNOWN_ERROR = "An unknown error occurred"
+    const val CANNOT_REACH_SERVER_ERROR = "Couldn't reach the server. Check your internet connection"
+    const val FILTERED_LIST_EMPTY_ERROR = "No ad matches the selected criteria"
+    //endregion
+
+    //region Tests tags
     const val ADS_LIST_TAG = "ADS_LIST_TAG"
     const val ADS_ITEM_TAG = "ADS_ITEM_TAG"
     const val TOP_BAR_TAG = "TOP_BAR_TAG"
@@ -15,8 +24,5 @@ object Constants {
     const val TOP_BAR_FILTER_ACTION_TAG = "TOP_BAR_FILTER_ACTION_TAG"
     const val TOP_BAR_DROPDOWN_MENU_TAG = "TOP_BAR_DROPDOWN_MENU_TAG"
     const val TOP_BAR_DROPDOWN_MENU_OPTION_TAG = "TOP_BAR_DROPDOWN_MENU_OPTION_TAG"
-
-    const val UNKNOWN_ERROR = "An unknown error occurred"
-    const val CANNOT_REACH_SERVER_ERROR = "Couldn't reach the server. Check your internet connection"
-    const val FILTERED_LIST_EMPTY_ERROR = "No ad matches the selected criteria"
+    //endregion
 }
