@@ -1,3 +1,22 @@
 <resources>
-    <string name="app_name">AvivRealEstate</string>
+    <string name="app_name" translatable="false">AvivRealEstate</string>
+    <string name="ad_photo_content_description">Ad photo</string>
+    <string name="square_meter_unit" translatable="false">%s m²</string>
+    <string name="rooms">"%s rooms"</string>
+    <string name="bedrooms">"%s bedrooms"</string>
+    <string name="one_room">"%s room"</string>
+    <string name="one_bedroom">"%s bedroom"</string>
+    <string name="being_sold_by">"Being sold by %s"</string>
+    <string name="price">%s €</string>
+    <string name="square_meter_price" translatable="false">%s €/m²</string>
+    <string name="image_placeholder_content_description">Ad photo is loading</string>
+    <string name="error_image_content_description">No photo available</string>
+    <string name="retry">Retry</string>
+    <string name="fetching_data_error">Something wrong happened while fetching data</string>
+    <string name="data_loading_error_image_content_description">Failed to load data</string>
+    <string name="back_icon_content_description">Back button</string>
+    <string name="filtrer_icon_content_description">Filtrer by property type</string>
+    <string name="check_icon_content_description">Option selected</string>
+    <string name="no_ad_matches_for_criteria">No ad matches the selected criteria</string>
+    <string name="close_full_screen_icon_content_description">Close full screen</string>
 </resources>
